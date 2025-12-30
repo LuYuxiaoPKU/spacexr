@@ -114,7 +114,13 @@ chooseSigmaC <- function(RCTD) {
     puck <- spatialRNA(RCTD)
     MIN_UMI <- config(RCTD)$UMI_min_sigma
     sigma <- 100
-    Q_mat_all <- get_Q_all()
+    saved_Q_mat <- c("/Data7/luyx/Share/Environment/SpatialV3/lib/R/library/spacexr/extdata/Q_mat_1.rds",
+                     "/Data7/luyx/Share/Environment/SpatialV3/lib/R/library/spacexr/extdata/Q_mat_2.rds",
+                     "/Data7/luyx/Share/Environment/SpatialV3/lib/R/library/spacexr/extdata/Q_mat_3.rds",
+                     "/Data7/luyx/Share/Environment/SpatialV3/lib/R/library/spacexr/extdata/Q_mat_4.rds",
+                     "/Data7/luyx/Share/Environment/SpatialV3/lib/R/library/spacexr/extdata/Q_mat_5.rds")
+    Q_mat_all <- unlist(lapply(saved_Q_mat, readRDS), recursive = FALSE)
+    #Q_mat_all <- get_Q_all()
     X_vals <- get_X_vals()
 
     # get initial classification
